@@ -100,4 +100,4 @@ do
 	fi
 done
 
-echo "Take a coffee break! \u2615"
+echo "Take a coffee break!"
