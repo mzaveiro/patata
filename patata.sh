@@ -100,4 +100,4 @@ do
 	fi
 done
 
-echo "Take a coffee break!"
+echo "Take a coffee break! ☕"
