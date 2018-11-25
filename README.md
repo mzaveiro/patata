@@ -4,6 +4,24 @@ A pomodoro timer for the shell with [Taskwarrior](https://taskwarrior.org)
 connection.
 A fork from [potato.sh](https://github.com/Bladtman242/potato) with tweeks.
 
+## How it work
+
+```sh
+patata -h
+
+usage: potato [-s] [-m] [-w m] [-b m] [-p i] [-t t] [-h]
+    -s: simple output. Intended for use in scripts
+		        When enabled, potato outputs one line for each minute, and doesn't print the bell character
+		        (ascii 007)
+
+    -m: mute -- don't play sounds when work/break is over
+    -w m: let work periods last m minutes (default is 25)
+    -b m: let break periods last m minutes (default is 5)
+    -p i: let iterate of pomodori bevor the big break (default is 4)
+    -t t: let task ID from Taskwarrior to start (default is the most urgent task)
+    -h: print this message
+```
+
 ## Credits
 Origin forket from the potato script from [Bladtman242](https://github.com/Bladtman242/).
 
