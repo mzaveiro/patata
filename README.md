@@ -22,6 +22,12 @@ usage: potato [-s] [-m] [-w m] [-b m] [-p i] [-t t] [-h]
     -h: print this message
 ```
 
+How the Pomorore Technique works read and learn it on
+[Wikipedia](https://en.wikipedia.org/wiki/Pomodoro_Technique).
+
+Learn also to use [Taskwarrior](https://taskwarrior.org) and you can use them
+until this script run.
+
 ## Credits
 Origin forket from the potato script from [Bladtman242](https://github.com/Bladtman242/).
 
