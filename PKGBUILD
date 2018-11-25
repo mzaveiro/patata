@@ -1,19 +1,20 @@
-pkgname=potato
+pkgname=patata
 pkgver=6
 pkgrel=1
-pkgdesc="A pomodoro timer for the shell"
+pkgdesc="A pomodoro timer for the shell uses Taskwarrior"
 arch=('any')
-url="https://github.com/Bladtman242/potato"
+url="https://github.com/rrmelcer/patata
 license=('MIT')
-depends=('alsa-utils')
-source=('potato.sh'
+depends=('alsa-utils'
+         'task')
+source=('patata.sh'
         'notification.wav'
         'LICENSE')
-md5sums=('3d5707d4194f205502fa2c2778252b90'
+md5sums=('afb17063051076f016a4d64c487594a1'
          'b01bacb54937c9bdd831f4d4ffd2e31c'
-         '1ddcbd2862764b43d75fb1e484bf8912')
+         'afb17063051076f016a4d64c487594a1')
 package() {
-	install -D $srcdir/potato.sh $pkgdir/usr/bin/$pkgname
+	install -D $srcdir/patata.sh $pkgdir/usr/bin/$pkgname
 	install -D -m644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	install -D $srcdir/notification.wav $pkgdir/usr/lib/$pkgname/notification.wav
 }

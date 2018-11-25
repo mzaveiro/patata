@@ -17,8 +17,8 @@ show_help() {
 		    -m: mute -- don't play sounds when work/break is over
 		    -w m: let work periods last m minutes (default is 25)
 		    -b m: let break periods last m minutes (default is 5)
-		    -p c: let loops of pomodori bevor the big break (default is 4)
-		    -t t: let ask ID from Taskwarrior to start (default is the most urgent task)
+		    -p c: let counts of pomodori bevor the big break (default is 4)
+		    -t t: let task ID from Taskwarrior to start (default is the most urgent task)
 		    -h: print this message
 	END
 }
