@@ -1,6 +1,6 @@
 # patata
 
-A pomodoro timer for the shell with [Taskwarrior](https.taskwarrior.org)
+A pomodoro timer for the shell with [Taskwarrior](https://taskwarrior.org)
 connection.
 A fork from [potato.sh](https://github.com/rrmelcer/potato.git) with tweeks.
 

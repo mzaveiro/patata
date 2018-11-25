@@ -61,18 +61,20 @@ fi
 
 while true
 do
+    task $TASK start
+
 	for ((i=$WORK; i>0; i--))
 	do
-        task $TASK start
 		printf "$time_left" $i "work"
 		sleep 1m
 	done
+
+    task $TASK stop
 
 	! $MUTE && play_notification
 	if $INTERACTIVE; then
 		read -d '' -t 0.001
 		echo -e "\a"
-        task $TASK stop
 		echo "Work over"
 		read
 	fi
