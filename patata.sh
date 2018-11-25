@@ -2,6 +2,7 @@
 
 WORK=25
 PAUSE=5
+POMODORI=4
 TASK=$(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1)
 INTERACTIVE=true
 MUTE=false
@@ -16,7 +17,8 @@ show_help() {
 		    -m: mute -- don't play sounds when work/break is over
 		    -w m: let work periods last m minutes (default is 25)
 		    -b m: let break periods last m minutes (default is 5)
-		    -t t: Task ID from Taskwarrior to start (default the most urgent task)
+		    -p c: let loops of pomodori bevor the big break (default is 4)
+		    -t t: let ask ID from Taskwarrior to start (default is the most urgent task)
 		    -h: print this message
 	END
 }
@@ -25,7 +27,7 @@ play_notification() {
 	aplay -q /usr/lib/potato/notification.wav&
 }
 
-while getopts :sw:b:t:m opt; do
+while getopts :sw:b:p:t:m opt; do
 	case "$opt" in
 	s)
 		INTERACTIVE=false
@@ -38,6 +40,9 @@ while getopts :sw:b:t:m opt; do
 	;;
 	b)
 		PAUSE=$OPTARG
+	;;
+	p)
+		POMODORI=$OPTARG
 	;;
 	t)
 		TASK=$OPTARG
@@ -59,7 +64,8 @@ else
 	time_left="$time_left\n"
 fi
 
-while true
+# while true
+for ((p=$POMODORI; p>0; p--))
 do
     task $TASK start
 
@@ -69,8 +75,6 @@ do
 		sleep 1m
 	done
 
-    task $TASK stop
-
 	! $MUTE && play_notification
 	if $INTERACTIVE; then
 		read -d '' -t 0.001
@@ -78,6 +82,8 @@ do
 		echo "Work over"
 		read
 	fi
+
+    task $TASK stop
 
 	for ((i=$PAUSE; i>0; i--))
 	do
@@ -93,3 +99,5 @@ do
 		read
 	fi
 done
+
+echo "Take a coffee break! \u2615"
