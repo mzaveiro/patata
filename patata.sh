@@ -1,11 +1,14 @@
 #!/bin/bash
 
+# set -xe
+
 WORK=25
 PAUSE=5
 POMODORI=4
 TASK=$(task next limit:1 | tail -n +4 | head -n 1 | sed 's/^ //' | cut -d ' ' -f1)
 INTERACTIVE=true
 MUTE=false
+BASEDIR="$( dirname "$(readlink -f "$( which patata )")" )"
 
 show_help() {
 	cat <<-END
@@ -24,7 +27,7 @@ show_help() {
 }
 
 play_notification() {
-	aplay -q /usr/lib/potato/notification.wav&
+	aplay -q $BASEDIR/notification.wav&
 }
 
 while getopts :sw:b:p:t:m opt; do
@@ -80,6 +83,7 @@ do
 		read -d '' -t 0.001
 		echo -e "\a"
 		echo "Work over"
+    notify-send "Work over"
 		read
 	fi
 
@@ -96,8 +100,14 @@ do
 		read -d '' -t 0.001
 		echo -e "\a"
 		echo "Pause over"
+    notify-send "Pause over"
 		read
 	fi
+  
+  read -p "Next task : " next_task
+  if [[ -n "$next_task" ]]; then
+    TASK=$next_task
+  fi
 done
 
 echo "Take a coffee break! ☕"
